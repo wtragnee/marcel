@@ -7,7 +7,7 @@ class Config {
       // In app, we have the global config, like listening port,
       // the routes to load, the logger level...
       app: {
-        port: 8000,
+        port: 80,
         logLevel: 'debug',
         routes: [
           'PingRoute.js',
