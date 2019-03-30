@@ -10,11 +10,14 @@ class RouteLoader {
 
   /**
    * @param  {Express} app
+   * @param  {Object} config
+   * @param  {Logger} logger
    */
-  load(app) {
-    _.forEach(this.routes, path => {
+  load({ app, config, logger }) {
+    _.forEach(this.routes, (path) => {
+      // eslint-disable-next-line
       const Route = require(`../../Core/RouteController/${path}`);
-      const route = new Route({ app });
+      const route = new Route({ app, config, logger });
       route.register();
     });
   }

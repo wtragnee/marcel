@@ -3,7 +3,7 @@ const _ = require('lodash');
 const BaseRoute = require('./BaseRoute');
 
 class PingRoute extends BaseRoute {
-  get config() {
+  get routeConfig() {
     return {
       path: '/ping',
     };
