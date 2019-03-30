@@ -2,17 +2,14 @@ const express = require('express');
 
 const Config = require('./Misc/Helper/Config');
 const Logger = require('./Misc/Helper/Logger');
+const RouteLoader = require('./Misc/Helper/RouteLoader');
 
 const config = new Config().load();
 const logger = new Logger({ config });
 
 const app = express();
 
-// app.get('/ping', (req, res) => res.send({ pong: _.now() }));
-
-logger.debug('debug');
-logger.log('log');
-logger.error('error');
+new RouteLoader({ config }).load(app);
 
 app.listen(config.app.port, () => {
   logger.debug(`App started listening on port ${config.app.port}`);
