@@ -29,16 +29,17 @@ class DriverModel {
     if (response.status !== 'OK') {
       throw new BaseError({ text: `Got invalid status from google: ${response.status}` });
     }
-    if (_.some(response.elements)) {
+    if (!_.some(response.rows)) {
       throw new BaseError({ text: 'Invalid response from google API: missing elements' });
     }
-    const element = _.head(response.elements);
+    const { elements } = _.head(response.rows);
+    const element = _.head(elements);
     if (element.status !== 'OK' || !_.has(element, 'duration.value') || !_.has(element, 'distance.value')) {
       throw new BaseError({ text: 'Invalid response from google API: invalid element' });
     }
     return {
       duration: element.duration.value,
-      distance: element.duration.distance,
+      distance: element.distance.value,
     };
   }
 }
