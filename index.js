@@ -11,6 +11,8 @@ const app = express();
 
 new RouteLoader({ config }).load({ app, config, logger });
 
-app.listen(config.app.port, () => {
-  logger.debug(`App started listening on port ${config.app.port}`);
+const PORT = process.env.PORT || config.app.port;
+
+app.listen(PORT, () => {
+  logger.debug(`App started listening on port ${PORT}`);
 });
