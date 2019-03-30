@@ -38,7 +38,7 @@ class RideProposalRoute extends BaseRoute {
     }
     const lon = parseFloat(lonString);
     if (_.isNaN(lon) || lon < -180 || lon > 180) {
-      throw new FormatError({ text: 'Invalid value for latitude' });
+      throw new FormatError({ text: 'Invalid value for longitude' });
     }
     return { lat, lon };
   }
@@ -109,8 +109,8 @@ class RideProposalRoute extends BaseRoute {
   async getRidePrice({ departure, arrival }) {
     // Get info on trip
     const { duration, distance } = await this.distance.get({ departure, arrival });
-    const kms = _.parseInt(distance / 1000);
-    const minutes = _.parseInt(duration / 60);
+    const kms = _.parseInt(distance / 1000) || 0;
+    const minutes = _.parseInt(duration / 60) || 0;
     const factor = this.getFactor();
     const { pricePerKm, pricePerMin } = this.config.ride;
     // Calculate price as asked

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "lint": "node_modules/.bin/eslint .  --no-color",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test APP_LOGGER_LEVEL=none ./node_modules/.bin/_mocha -R spec --recursive test/"
   },
   "author": "w.tragnee@gmail.com",
   "license": "ISC",
@@ -21,6 +21,9 @@
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.16.0"
+    "eslint-plugin-import": "^2.16.0",
+    "mocha": "^6.0.2",
+    "should": "^13.2.3",
+    "sinon": "^7.3.1"
   }
 }
