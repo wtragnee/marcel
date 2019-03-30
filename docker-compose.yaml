@@ -4,5 +4,6 @@ services:
     build: .
     environment:
       NODE_ENV: dev
+      DISTANCE_APIKEY: ${DISTANCE_APIKEY}
     ports:
       - "0.0.0.0:8000:8000"

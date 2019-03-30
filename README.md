@@ -7,4 +7,4 @@
 // Amelioration: add retry into RequestManager
 
 // Start project
-docker-compose up -d
+DISTANCE_APIKEY=test docker-compose up -d
