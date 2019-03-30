@@ -14,6 +14,23 @@ class Config {
           'RideProposalRoute.js',
         ],
       },
+      driver: {
+        uri: 'https://chauffemarcel.cab/yuso-gateway/drivers',
+      },
+      ride: {
+        pricePerKm: 1.5,
+        pricePerMin: 0.32,
+        normalHourFactor: 1,
+        pickHourFactor: 1.2,
+        pickHourRanges: [
+          ['07:00', '09:00'],
+          ['16:00', '19:00'],
+        ],
+      },
+      distance: {
+        apiKey: process.env.DISTANCE_APIKEY, // normally, it would be done in a module/loader
+        uri: 'https://maps.googleapis.com/maps/api/distancematrix/json',
+      },
     };
     return this.config;
   }
