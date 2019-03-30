@@ -6,20 +6,22 @@ You can find it [here](https://wtragnee-marcel.herokuapp.com) with this [example
 
 2. Using docker
 `DISTANCE_APIKEY={{GOOGLE_APIKEY}} docker-compose up -d`
+[test](http://localhost:80)
 
 3. Using node
 ```
 npm install
 NODE_ENV=dev DISTANCE_APIKEY={{GOOGLE_APIKEY}} node index.js
 ```
+[test](http://localhost:80)
 
 ## What has been done
 1. Architecture
 - index.js: entry
 - Core:
--* RouteController: The different routes the API can use. The rules (for example, how the price is calculated) will be here
--* Model: They use the connectors to require the data (for example, here, the Drivers). They are the only one that should use connectors. A model can change its connectors, it should never change its inputs/outputs, so if we need to use, for example, a mysql instead of a request, the model is the only place we have a modification to make
--- Entity: Initialized by models, classes where we make operations (for example, for a driver, validate its car)
+ * RouteController: The different routes the API can use. The rules (for example, how the price is calculated) will be here
+ * Model: They use the connectors to require the data (for example, here, the Drivers). They are the only one that should use connectors. A model can change its connectors, it should never change its inputs/outputs, so if we need to use, for example, a mysql instead of a request, the model is the only place we have a modification to make
+ * Entity: Initialized by models, classes where we make operations (for example, for a driver, validate its car)
 - Misc:
 -- Error: Classes helping for the error gestion, so the app won't crash, and we do not have to repeat the gestion of errors. We can create one class for everything (Google request failed, invalid inputs, timeout...)
 -- Helper:
